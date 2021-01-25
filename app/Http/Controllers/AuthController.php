@@ -57,7 +57,6 @@ class AuthController extends Controller
         $user->assignRole('anggota');
 
         return redirect('/auth/login')->with('status', 'Anda sukses registrasi');
-        // TODO TEST REGISTER USER
     }
 
     public function logout()
