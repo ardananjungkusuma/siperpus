@@ -3,6 +3,7 @@
 Daftar Buku | SIPERPUS
 @endsection
 @section('header')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Start datatable css -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
@@ -41,8 +42,9 @@ Daftar Buku | SIPERPUS
                                     <td>{{ substr($buku['deskripsi'], 0, 50) }}...</td>
                                     <td><img src="{{ asset('img/buku/' . $buku['gambar']) }}" width="100px"></td>
                                     <td>
-                                        <button class="btn btn-info">Detail</button>
-                                        <a href="" class="btn btn-warning">Edit</a>
+                                        <button class="btn btn-info" data-toggle="modal" data-target="#detailModal"
+                                            onclick="detailBuku('{{ $buku['slug'] }}')">Detail</button>
+                                        <a href="/kelola/buku/edit/{{ $buku['slug'] }}" class="btn btn-warning">Edit</a>
                                         <a href="/kelola/buku/hapus/{{ $buku['slug'] }}"
                                             onclick="confirm('Apakah anda yakin ingin menghapus data buku ini?')"
                                             class="btn btn-danger">Hapus</a>
@@ -59,6 +61,7 @@ Daftar Buku | SIPERPUS
     </div>
 </div>
 
+{{-- Tambah Buku Modal --}}
 <div class="modal fade" id="addBukuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -101,12 +104,61 @@ Daftar Buku | SIPERPUS
         </div>
     </div>
 </div>
-@endsection
-@section('footer')
-<!-- Start datatable js -->
-<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-@endsection
+
+<!-- Detail Buku Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Buku</span>
+                </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <center class="mb-4">
+                    <h6 id="judul_buku_detail"></h6>
+                </center>
+                <center>
+                    <div id="gambar_detail" class="mb-2"></div>
+                    <span id="pengarang_detail" class="mb-5" style="font-weight: bold"></span><br>
+                </center>
+                <span id="deskripsi_detail" style="white-space: pre-line"></span>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function detailBuku(slug) {
+            let judul_buku = document.getElementById(`judul_buku_detail`);
+            let pengarang_buku = document.getElementById(`pengarang_detail`);
+            let deskripsi_buku = document.getElementById(`deskripsi_detail`);
+            $.ajax({
+                type: `GET`,
+                url: `/kelola/buku/detail/${slug}`,
+                dataType: 'json',
+                success: (hasil) => {
+                    console.log(hasil);
+                    hasil.forEach(function(item){
+                        judul_buku.textContent = item.nama;
+                        $("#gambar_detail").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" width="100px">`)
+                        pengarang_buku.textContent = item.pengarang;
+                        deskripsi_buku.textContent = item.deskripsi;
+                    });
+                }
+            });
+        }
+    </script>
+    @endsection
+    @section('footer')
+    <!-- Start datatable js -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+    @endsection

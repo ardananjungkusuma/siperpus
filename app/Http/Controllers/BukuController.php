@@ -47,4 +47,10 @@ class BukuController extends Controller
 
         return redirect('/kelola/buku/daftar')->with('status', 'Sukses Menambah Data Buku');
     }
+
+    public function detail($slug)
+    {
+        $buku = Buku::where('slug', $slug)->get();
+        echo json_encode($buku);
+    }
 }

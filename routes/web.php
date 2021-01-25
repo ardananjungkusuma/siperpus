@@ -15,7 +15,7 @@ Route::group(['middleware' => ['auth', 'role:pegawai']], function () {
 
     Route::get('/kelola/buku/daftar', 'BukuController@index');
     Route::post('/kelola/buku/tambah', 'BukuController@tambah');
-    Route::get('/kelola/buku/detail/{id}', 'BukuController@detail');
+    Route::get('/kelola/buku/detail/{slug}', 'BukuController@detail');
     // Route::get('/kelola/anggota/daftar', 'BukuController@index');
 
     // Route::get('/kelola/anggota/daftar', 'BukuController@index');
