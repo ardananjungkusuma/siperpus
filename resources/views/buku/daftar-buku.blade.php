@@ -19,6 +19,14 @@ Daftar Buku | SIPERPUS
             <div class="card">
                 <div class="card-body">
                     <h4 class="header-title">Daftar Buku Perpustakaan</h4>
+                    @if(session('status'))
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addBukuModal">
                         Tambah Data Buku
                     </button>
@@ -44,8 +52,10 @@ Daftar Buku | SIPERPUS
                                     <td>
                                         <button class="btn btn-info" data-toggle="modal" data-target="#detailModal"
                                             onclick="detailBuku('{{ $buku['slug'] }}')">Detail</button>
-                                        <a href="/kelola/buku/edit/{{ $buku['slug'] }}" class="btn btn-warning">Edit</a>
-                                        <a href="/kelola/buku/hapus/{{ $buku['slug'] }}"
+                                        <button data-toggle="modal" data-target="#editBukuModal"
+                                            onclick="editBuku('{{ $buku['slug'] }}')"
+                                            class="btn btn-warning">Edit</button>
+                                        <a href="/kelola/buku/delete/{{ $buku['slug'] }}"
                                             onclick="confirm('Apakah anda yakin ingin menghapus data buku ini?')"
                                             class="btn btn-danger">Hapus</a>
                                     </td>
@@ -131,9 +141,59 @@ Daftar Buku | SIPERPUS
             </div>
         </div>
     </div>
+</div>
 
-    <script>
-        function detailBuku(slug) {
+{{-- Edit Buku --}}
+<div class="modal fade" id="editBukuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Data Buku</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <center>
+                    <div id="current_gambar" class="mb-3 mt-4"></div>
+                </center>
+                <form action="/kelola/buku/edit" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="slug" id="edit_slug" required>
+                    <div class="form-group">
+                        <label>Nama Buku</label>
+                        <input type="text" name="nama" id="edit_nama" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Pengarang</label>
+                        <input type="text" name="pengarang" id="edit_pengarang" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi Buku</label>
+                        <textarea type="text" name="deskripsi" id="edit_deskripsi" class="form-control" rows="4"
+                            required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar Sampul Buku</label>
+                        <input type="file" class="form-control-file" name="gambar">
+                    </div>
+                    <small>
+                        *Gambar format : <span style="color:red">JPG, JPEG, PNG, maksimal ukuran 3mb</span><br>
+                        <b>* Jika ingin mengganti foto buku silahkan pilih gambar. Jika tidak biarkan kosong.</b>
+                    </small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Edit Buku</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function detailBuku(slug) {
             let judul_buku = document.getElementById(`judul_buku_detail`);
             let pengarang_buku = document.getElementById(`pengarang_detail`);
             let deskripsi_buku = document.getElementById(`deskripsi_detail`);
@@ -142,7 +202,6 @@ Daftar Buku | SIPERPUS
                 url: `/kelola/buku/detail/${slug}`,
                 dataType: 'json',
                 success: (hasil) => {
-                    console.log(hasil);
                     hasil.forEach(function(item){
                         judul_buku.textContent = item.nama;
                         $("#gambar_detail").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" width="100px">`)
@@ -152,13 +211,30 @@ Daftar Buku | SIPERPUS
                 }
             });
         }
-    </script>
-    @endsection
-    @section('footer')
-    <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
-    @endsection
+
+        function editBuku(slug){
+            $.ajax({
+                type: `GET`,
+                url: `/kelola/buku/detail/${slug}`,
+                dataType: 'json',
+                success: (hasil) => {
+                    hasil.forEach(function(item){
+                        $("#current_gambar").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" width="100px">`)
+                        document.getElementById(`edit_slug`).value = item.slug;
+                        document.getElementById(`edit_nama`).value = item.nama;
+                        document.getElementById(`edit_pengarang`).value = item.pengarang;
+                        document.getElementById(`edit_deskripsi`).value = item.deskripsi;
+                    });
+                }
+            });
+        }
+</script>
+@endsection
+@section('footer')
+<!-- Start datatable js -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js"></script>
+@endsection
