@@ -30,13 +30,12 @@ Daftar Buku | SIPERPUS
                     <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addBukuModal">
                         Tambah Data Buku
                     </button>
-                    <div class="data-tables datatable-primary">
+                    <div class="table-responsive">
                         <table id="dataTable" class="text-center">
-                            <thead class="text-capitalize bg-primary">
+                            <thead class="text-capitalize bg-primary text-white">
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Buku</th>
-                                    <th>Deskripsi</th>
                                     <th>Gambar</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -47,8 +46,8 @@ Daftar Buku | SIPERPUS
                                 <tr>
                                     <td>{{ $no }}</td>
                                     <td>{{ $buku['nama'] }}</td>
-                                    <td>{{ substr($buku['deskripsi'], 0, 50) }}...</td>
-                                    <td><img src="{{ asset('img/buku/' . $buku['gambar']) }}" width="100px"></td>
+                                    <td><img src="{{ asset('img/buku/' . $buku['gambar']) }}"
+                                            style="width:100%;max-width:150px"></td>
                                     <td>
                                         <button class="btn btn-info" data-toggle="modal" data-target="#detailModal"
                                             onclick="detailBuku('{{ $buku['slug'] }}')">Detail</button>
@@ -204,7 +203,7 @@ Daftar Buku | SIPERPUS
                 success: (hasil) => {
                     hasil.forEach(function(item){
                         judul_buku.textContent = item.nama;
-                        $("#gambar_detail").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" width="100px">`)
+                        $("#gambar_detail").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" style="width:100%;max-width:150px">`)
                         pengarang_buku.textContent = item.pengarang;
                         deskripsi_buku.textContent = item.deskripsi;
                     });
@@ -219,7 +218,7 @@ Daftar Buku | SIPERPUS
                 dataType: 'json',
                 success: (hasil) => {
                     hasil.forEach(function(item){
-                        $("#current_gambar").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" width="100px">`)
+                        $("#current_gambar").html(`<img src="{{ asset('img/buku/${item.gambar}') }}" style="width:100%;max-width:150px">`)
                         document.getElementById(`edit_slug`).value = item.slug;
                         document.getElementById(`edit_nama`).value = item.nama;
                         document.getElementById(`edit_pengarang`).value = item.pengarang;

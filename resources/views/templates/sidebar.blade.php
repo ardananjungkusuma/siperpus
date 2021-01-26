@@ -9,7 +9,7 @@
         <div class="menu-inner">
             <nav>
                 <ul class="metismenu" id="menu">
-                    <li><a href="maps.html"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                    <li><a href="/pegawai"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
                     <li><a href="/kelola/peminjaman/daftar"><i class="ti-agenda"></i><span>Peminjaman</span></a></li>
                     <li><a href="/kelola/buku/daftar"><i class="ti-book"></i><span>Buku</span></a></li>
                     <li><a href="/kelola/anggota/daftar"><i class="ti-user"></i><span>Manajemen Anggota</span></a></li>
