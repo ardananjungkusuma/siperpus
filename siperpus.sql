@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 26, 2021 at 05:22 PM
+-- Generation Time: Jan 28, 2021 at 02:42 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -131,12 +131,22 @@ CREATE TABLE `peminjaman` (
   `id_user` int(11) NOT NULL,
   `nama_buku` varchar(250) NOT NULL,
   `tanggal_pinjam` date NOT NULL,
+  `tanggal_maks_pengembalian` date NOT NULL,
   `tanggal_kembali` date DEFAULT NULL,
   `denda` int(12) NOT NULL DEFAULT 0,
-  `status_pinjaman` varchar(100) NOT NULL DEFAULT 'Belum Dikembalikan',
+  `status_peminjaman` varchar(100) NOT NULL DEFAULT 'Belum Dikembalikan',
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `peminjaman`
+--
+
+INSERT INTO `peminjaman` (`id`, `id_user`, `nama_buku`, `tanggal_pinjam`, `tanggal_maks_pengembalian`, `tanggal_kembali`, `denda`, `status_peminjaman`, `updated_at`, `created_at`) VALUES
+(1, 4, 'Kata: Tentang Senja Yang Kehilangan Langitnya', '2021-01-26', '2021-02-02', NULL, 0, 'Belum Dikembalikan', '2021-01-27 07:19:25', '2021-01-27 07:19:25'),
+(2, 3, 'Bumi Manusia', '2021-01-18', '2021-01-25', '2021-01-28', 15000, 'Sudah Dikembalikan (Terlambat)', '2021-01-28 13:27:40', '2021-01-27 15:37:37'),
+(5, 3, 'A Cup Of Tea', '2021-01-28', '2021-02-04', NULL, 0, 'Belum Dikembalikan', '2021-01-28 13:42:23', '2021-01-28 13:42:23');
 
 -- --------------------------------------------------------
 
@@ -210,8 +220,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `alamat`, `no_hp`, `password`, `status_user`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ardan Anjung Kusuma', 'ardan@gmail.com', NULL, NULL, '$2y$10$/HLwlXt61xERt0QY4K2EG.7Iy0N/jh/0U0Dx9BeBiAKhGjKBTGhzO', 'Aktif', 'jo7HQgpkUja4bPmVFdVLWu9txRdYmHOHneXrULYsNRbEIGj7ZStZYSj6W3Ws', '2021-01-21 20:28:23', '2021-01-21 20:28:23'),
-(2, 'Gunawan Kurniya Aji', 'gunawan@gmail.com', NULL, NULL, '$2y$10$4FwxnKJV.zjJbFP2rjrm3uZUQZ2PITlt41R5UgH.kesXMwzdjlMAm', 'Aktif', 'Lnel8bCVOwt3sntK2BD0ZuoHz1VCyY0jKXQdr5kd9PoEhSYC9VWOk58GnrPR', '2021-01-21 20:29:28', '2021-01-21 20:29:28'),
+(1, 'Ardan Anjung Kusuma', 'ardan@gmail.com', NULL, NULL, '$2y$10$/HLwlXt61xERt0QY4K2EG.7Iy0N/jh/0U0Dx9BeBiAKhGjKBTGhzO', 'Aktif', 'XTt4w8UTdFg0Oc1NWka136TT3U7rho6ztGOFDCxQFZ1dmycYye4WCOgegfST', '2021-01-21 20:28:23', '2021-01-21 20:28:23'),
+(2, 'Gunawan Kurniya Aji', 'gunawan@gmail.com', NULL, NULL, '$2y$10$4FwxnKJV.zjJbFP2rjrm3uZUQZ2PITlt41R5UgH.kesXMwzdjlMAm', 'Aktif', '2O8r5JtQ9aCPCpLR8qLYg3F8rpiVcBesCoI32WF9LmtPURbKvCgLJj7JT1Cr', '2021-01-21 20:29:28', '2021-01-21 20:29:28'),
 (3, 'Ahmad Kholil', 'kholil@gmail.com', 'Jl. Melati 12 Bojonegoro', NULL, '$2y$10$Cv6wCtUW9KRlpsymyqCa/e5vuofrCq50/44rFvhjNhM2664ESrTQu', 'Aktif', 'u9jcKERUlyVSVPUwWCglfnM2bvhvrCe1HVUK3ta4LftkSa5hWrSgYDkRSWgI', '2021-01-21 23:46:00', '2021-01-21 23:46:00'),
 (4, 'Yuni Kurnia', 'yuni@gmail.com', 'Jl. Mawar 13 Bojonegoro', '081234561232', '$2y$10$zcjXzPdPIJPxS.qv8dt6sOL.IEyJR6cDuO/wh.wz4ITbRyh/zT9LS', 'Aktif', '2zyuLc8nmEpmvh0UXioKjxvhyebEDdHnjYOAPtlltVD4G461OsFd9w7SZfwY', '2021-01-24 20:33:03', '2021-01-24 20:33:03'),
 (5, 'Gita Savitri Devi', 'gita@gmail.com', 'Jl. Sesame 12 Bojonegoro', '082341234821', '$2y$10$s7.L/GrMVb.uH/HqBYw/quXJ3kkVVBmGbyVfG0l0bVa3xXzhcG0ga', 'Tidak Aktif', 'ub8qax9pVuJoFmaccZJgQyuPZ4bor4t3zrc767xJQYuWt9dg3aWh3t2y27qA', '2021-01-24 20:43:00', '2021-01-24 20:43:00');
@@ -292,7 +302,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -304,7 +314,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `permissions`

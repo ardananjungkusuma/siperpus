@@ -1,6 +1,6 @@
 @extends('templates.master')
 @section('title')
-Daftar Peminjaman | SIPERPUS
+Daftar Peminjaman Buku | SIPERPUS
 @endsection
 @section('header')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -28,21 +28,20 @@ Daftar Peminjaman | SIPERPUS
                         </button>
                     </div>
                     @endif
-                    <button type="button" class="btn btn-primary mb-3" data-toggle="modal"
+                    <button type="button" class="btn btn-info mb-3" data-toggle="modal"
                         data-target="#addPeminjamanModal">
                         Tambah Data Peminjaman
                     </button>
                     <div class="table-responsive">
                         <table id="dataTable" class="text-center">
-                            <thead class="text-capitalize bg-primary text-white">
+                            <thead class="text-capitalize bg-info text-white">
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Peminjam</th>
                                     <th>Nama Buku</th>
                                     <th>Tanggal Pinjam</th>
-                                    <th>Tanggal Kembali</th>
-                                    <th>Denda</th>
-                                    <th>Status Pinjaman</th>
+                                    <th>Tanggal Maksimal Pengembalian</th>
+                                    <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -50,6 +49,44 @@ Daftar Peminjaman | SIPERPUS
                                 <?php $no = 1; ?>
                                 @foreach($peminjaman as $peminjaman)
                                 <tr>
+                                    <?php
+                                        // Penghitungan Jarak Maksimal Pengembalian dan Hari Sekarang
+                                        date_default_timezone_set("Asia/Bangkok");
+                                        $date1= date('Y-m-d');
+                                        $date2= $peminjaman->tanggal_maks_pengembalian;
+                                        $diff = abs(strtotime($date2) - strtotime($date1));
+                                        $years = floor($diff / (365*60*60*24));
+                                        $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+                                        $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+                                        if($date1 > $date2){
+                                            $hari_pengembalian =  $days;
+                                        }else{
+                                            $hari_pengembalian =  "-" . $days;
+                                        }
+                                    ?>
+                                    <td>{{ $no }}</td>
+                                    <td>{{ $peminjaman->user->name }}</td>
+                                    <td>{{ $peminjaman->nama_buku }}</td>
+                                    <td>{{ date("d-m-Y", strtotime($peminjaman->tanggal_pinjam))  }}</td>
+                                    <td>{{ date("d-m-Y", strtotime($peminjaman->tanggal_maks_pengembalian))  }}</td>
+                                    <td>{{ $peminjaman->status_peminjaman }}</td>
+                                    <td>
+                                        <button class="badge badge-info btn-sm m-1" data-toggle="modal"
+                                            data-target="#detailModal"
+                                            onclick="detailPeminjaman('{{ $peminjaman->id }}','{{ $peminjaman->user->name }}')"><i
+                                                class="fa fa-eye"></i>
+                                            Detail</button>
+                                        <?php if($peminjaman->status_peminjaman == "Belum Dikembalikan"){ ?>
+                                        <button class="badge badge-success btn-sm m-1" data-toggle="modal"
+                                            data-target="#pengembalianModal"
+                                            onclick="pengembalianPinjaman('{{ $peminjaman->id }}','{{ $hari_pengembalian }}','{{ $peminjaman->user->name }}','{{ date('Y-m-d') }}')"><i
+                                                class="fa fa-undo"></i>
+                                            Pengembalian</button>
+                                        <a onclick="return confirm('Apakah anda yakin ingin menghapus data peminjaman ini?')"
+                                            href="/kelola/peminjaman/delete/{{ $peminjaman->id }}"
+                                            class="badge badge-danger btn-sm m-1"><i class="fa fa-trash"></i>Hapus</a>
+                                        <?php } ?>
+                                    </td>
                                 </tr>
                                 <?php $no++  ?>
                                 @endforeach
@@ -98,14 +135,100 @@ Daftar Peminjaman | SIPERPUS
                         </select>
                     </div>
                     <div class="form-group">
+                        <?php date_default_timezone_set("Asia/Bangkok") ?>
                         <label>Tanggal Peminjaman : <b>{{ $today = date('d-m-Y') }}</b></label>
                         <label>Maksimal Tanggal Pengembalian :
                             <b>{{ date('d-m-y', strtotime("+7 day", strtotime($today))) }}</b></label>
                     </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 <button type="submit" class="btn btn-success">Tambah Data Peminjaman</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail Peminjaman Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detail Peminjaman</span>
+                </h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <label style="font-weight: bolder">Nama Peminjam : </label><span id="nama_peminjam_detail"></span><br>
+                <label style="font-weight: bolder">Nama Buku : </label><span id="nama_buku_detail"></span><br>
+                <label style="font-weight: bolder">Tanggal Pinjam : </label><span id="tanggal_pinjam_detail"></span><br>
+                <label style="font-weight: bolder">Tanggal Maksimal Pengembalian : </label><span
+                    id="tanggal_maks_pengembalian_detail"></span><br>
+                <label style="font-weight: bolder">Tanggal Kembali : </label><span
+                    id="tanggal_kembali_detail"></span><br>
+                <label style="font-weight: bolder">Denda : </label><span id="denda_detail"></span><br>
+                <label style="font-weight: bolder">Status Peminjaman : </label><span
+                    id="status_peminjaman_detail"></span><br>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Pengembalian Modal --}}
+<div class="modal fade" id="pengembalianModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pengembalian Buku</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/kelola/peminjaman/pengembalian" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" id="edit_id" required>
+                    <div class="form-group">
+                        <label>Nama Peminjam</label>
+                        <input type="text" id="edit_nama_peminjam" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Buku</label>
+                        <input type="text" id="edit_nama_buku" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Pinjam</label>
+                        <input type="date" id="edit_tanggal_pinjam" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Maks Pengembalian</label>
+                        <input type="date" id="edit_tanggal_maks_pengembalian" readonly class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Tanggal Kembali (Hari Ini)</label>
+                        <input type="date" name="tanggal_kembali" id="edit_tanggal_kembali" required readonly
+                            class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Denda</label>
+                        <input type="number" name="denda" id="edit_denda" required readonly class="form-control">
+                    </div>
+                    <small>
+                        <h6>*Aturan : <span style="color:red">Anggota Harus membayar denda terlebih dahulu jika ingin
+                                mengembalikan buku.</span></h6>
+                    </small>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button onclick="return confirm('Lanjutkan Proses Pengembalian Pinjaman?')" type="submit"
+                    class="btn btn-success">Pengembalian Pinjaman</button>
                 </form>
             </div>
         </div>
@@ -119,6 +242,65 @@ Daftar Peminjaman | SIPERPUS
             minimumInputLength: 3
         });
     });
+
+    function detailPeminjaman(id, nama_anggota) {
+            let nama_peminjam = document.getElementById(`nama_peminjam_detail`);
+            let nama_buku = document.getElementById(`nama_buku_detail`);
+            let tanggal_pinjam = document.getElementById(`tanggal_pinjam_detail`);
+            let tanggal_maks_pengembalian = document.getElementById(`tanggal_maks_pengembalian_detail`);
+            let tanggal_kembali = document.getElementById(`tanggal_kembali_detail`);
+            let denda = document.getElementById(`denda_detail`);
+            let status_peminjaman = document.getElementById(`status_peminjaman_detail`);
+            $.ajax({
+                type: `GET`,
+                url: `/kelola/peminjaman/detail/${id}`,
+                dataType: 'json',
+                success: (hasil) => {
+                    nama_peminjam.textContent = nama_anggota;
+                    nama_buku.textContent = hasil.nama_buku;
+                    tanggal_pinjam.textContent =  hasil.tanggal_pinjam.split("-").reverse().join("-");
+                    tanggal_maks_pengembalian.textContent = hasil.tanggal_maks_pengembalian.split("-").reverse().join("-");
+                    if(!hasil.tanggal_kembali){
+                        tanggal_kembali.textContent = hasil.tanggal_kembali;
+                    }else{
+                        tanggal_kembali.textContent = hasil.tanggal_kembali.split("-").reverse().join("-");
+                    }
+                    denda.textContent = hasil.denda;
+                    status_peminjaman.textContent = hasil.status_peminjaman;
+                }
+            });
+        }
+
+        function pengembalianPinjaman(id, hari_pengembalian, nama_anggota, today){
+            let denda_per_hari = 5000; // Denda Perpustakaan jika terlambat adalah 5000 perhari
+            let id_peminjaman = document.getElementById(`edit_id`);
+            let nama_peminjam = document.getElementById(`edit_nama_peminjam`);
+            let nama_buku = document.getElementById(`edit_nama_buku`);
+            let tanggal_pinjam = document.getElementById(`edit_tanggal_pinjam`);
+            let tanggal_maks_pengembalian = document.getElementById(`edit_tanggal_maks_pengembalian`);
+            let tanggal_kembali = document.getElementById(`edit_tanggal_kembali`);
+            let denda = document.getElementById(`edit_denda`);
+            if(hari_pengembalian > 0){
+                var jumlah_denda = hari_pengembalian * denda_per_hari;
+            }else{
+                var jumlah_denda = 0;
+
+            }
+            $.ajax({
+                type: `GET`,
+                url: `/kelola/peminjaman/detail/${id}`,
+                dataType: 'json',
+                success: (hasil) => {
+                    id_peminjaman.value = id;
+                    nama_peminjam.value = nama_anggota;
+                    nama_buku.value = hasil.nama_buku;
+                    tanggal_pinjam.value =  hasil.tanggal_pinjam;
+                    tanggal_maks_pengembalian.value = hasil.tanggal_maks_pengembalian;
+                    tanggal_kembali.value = today;
+                    denda.value = jumlah_denda;
+                }
+            });
+        }
 </script>
 @endsection
 @section('footer')

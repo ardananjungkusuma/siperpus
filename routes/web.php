@@ -20,6 +20,10 @@ Route::group(['middleware' => ['auth', 'role:pegawai']], function () {
     Route::get('/kelola/buku/delete/{slug}', 'BukuController@delete');
 
     Route::get('/kelola/peminjaman/daftar', 'PeminjamanController@index');
+    Route::post('/kelola/peminjaman/tambah', 'PeminjamanController@tambah');
+    Route::get('/kelola/peminjaman/detail/{id}', 'PeminjamanController@detail');
+    Route::post('/kelola/peminjaman/pengembalian', 'PeminjamanController@pengembalian');
+    Route::get('/kelola/peminjaman/delete/{id}', 'PeminjamanController@delete');
 
     // Route::get('/kelola/anggota/daftar', 'BukuController@index');
 });

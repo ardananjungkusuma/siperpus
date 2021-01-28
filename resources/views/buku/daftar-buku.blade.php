@@ -49,14 +49,16 @@ Daftar Buku | SIPERPUS
                                     <td><img src="{{ asset('img/buku/' . $buku['gambar']) }}"
                                             style="width:100%;max-width:150px"></td>
                                     <td>
-                                        <button class="btn btn-info" data-toggle="modal" data-target="#detailModal"
-                                            onclick="detailBuku('{{ $buku['slug'] }}')">Detail</button>
+                                        <button class="badge badge-info btn-sm m-1" data-toggle="modal"
+                                            data-target="#detailModal" onclick="detailBuku('{{ $buku['slug'] }}')"><i
+                                                class="fa fa-eye"></i> Detail</button>
                                         <button data-toggle="modal" data-target="#editBukuModal"
                                             onclick="editBuku('{{ $buku['slug'] }}')"
-                                            class="btn btn-warning">Edit</button>
-                                        <a href="/kelola/buku/delete/{{ $buku['slug'] }}"
-                                            onclick="confirm('Apakah anda yakin ingin menghapus data buku ini?')"
-                                            class="btn btn-danger">Hapus</a>
+                                            class="badge badge-warning btn-sm m-1"><i class="fa fa-pencil"></i>
+                                            Edit</button>
+                                        <a onclick="return confirm('Apakah anda yakin ingin menghapus data buku ini?')"
+                                            href="/kelola/buku/delete/{{ $buku['slug'] }}"
+                                            class="badge badge-danger btn-sm m-1"><i class="fa fa-trash"></i> Hapus</a>
                                     </td>
                                 </tr>
                                 <?php $no++  ?>
