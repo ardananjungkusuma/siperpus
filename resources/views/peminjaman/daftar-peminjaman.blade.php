@@ -14,6 +14,8 @@ Daftar Peminjaman Buku | SIPERPUS
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 @section('content')
+<img id="loading-image" src="{{ asset('img/loader.gif') }}"
+    style="display:none;position:fixed;left: 50%;top:35%;z-index: 1000;;height 35px" />
 <div class="main-content-inner">
     <div class="row">
         <div class="col-lg-12 mt-5">
@@ -255,6 +257,9 @@ Daftar Peminjaman Buku | SIPERPUS
                 type: `GET`,
                 url: `/kelola/peminjaman/detail/${id}`,
                 dataType: 'json',
+                beforeSend: function() {
+                    $("#loading-image").show();
+                },
                 success: (hasil) => {
                     nama_peminjam.textContent = nama_anggota;
                     nama_buku.textContent = hasil.nama_buku;
@@ -267,6 +272,7 @@ Daftar Peminjaman Buku | SIPERPUS
                     }
                     denda.textContent = hasil.denda;
                     status_peminjaman.textContent = hasil.status_peminjaman;
+                    $("#loading-image").hide();
                 }
             });
         }
