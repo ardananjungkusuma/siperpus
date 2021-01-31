@@ -10,8 +10,13 @@ class AdminController extends Controller
 {
     public function daftarPegawai()
     {
-        $pegawai = User::role('pegawai')->where('id', '!=', auth()->id())->orderBy('name')->get();
-        return view('admin.daftar-pegawai', compact('pegawai'));
+        $users = User::with('roles')->where('id', '!=', auth()->id())->orderBy('name')->get();
+        $pegawai = $users->reject(function ($user, $key) {
+            return $user->hasAnyRole('anggota', 'admin');
+        });
+        $admin = User::role(['admin'])->where('id', '!=', auth()->id())->get();
+
+        return view('admin.daftar-pegawai', compact('pegawai', 'admin'));
     }
 
     public function tambahPegawai(Request $request)
@@ -45,5 +50,13 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect('/kelola/pegawai/daftar')->with('status', 'Sukses Hapus Data Pegawai');
+    }
+
+    public function setAdminPegawai($id)
+    {
+        $user = User::find($id);
+        $user->assignRole('admin');
+
+        return redirect('/kelola/pegawai/daftar')->with('status', 'Sukses Menjadikan' . $user->name . ' Sebagai Admin');
     }
 }

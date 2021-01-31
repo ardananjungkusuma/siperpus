@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/kelola/pegawai/daftar', 'AdminController@daftarPegawai');
     Route::post('/kelola/pegawai/tambah', 'AdminController@tambahPegawai');
     Route::get('/kelola/pegawai/hapus/{id}', 'AdminController@hapusPegawai');
+    Route::get('/kelola/pegawai/setadmin/{id}', 'AdminController@setAdminPegawai');
 });
 
 Route::group(['middleware' => ['auth', 'role:anggota']], function () {

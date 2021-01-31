@@ -53,12 +53,42 @@ Daftar Pegawai | SIPERPUS
                                     <td>{{ $pegawai->alamat }}</td>
                                     <td>{{ $pegawai->no_hp }}</td>
                                     <td>
-                                        {{ $pegawai->roles->pluck('name')->first(); }}
+                                        <a onclick="return confirm('Apakah anda yakin ingin menjadikan {{ $pegawai->name }} sebagai admin?')"
+                                            href="/kelola/pegawai/setadmin/{{ $pegawai->id }}"
+                                            class="btn btn-warning btn-sm"><i class="fa fa-shield"></i>
+                                            Jadikan Admin</a>
                                         <a onclick="return confirm('Apakah anda yakin ingin menghapus akun pegawai?')"
                                             href="/kelola/pegawai/hapus/{{ $pegawai->id }}"
                                             class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>
                                             Hapus</a>
                                     </td>
+                                </tr>
+                                <?php $no++  ?>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4 class="header-title">Daftar Admin Perpustakaan</h4>
+                    <div class="table-responsive">
+                        <table id="dataTable2" class="text-center">
+                            <thead class="text-capitalize text-white" style="background-color: rgb(46, 49, 199)">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Email</th>
+                                    <th>Alamat</th>
+                                    <th>No HP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no = 1; ?>
+                                @foreach($admin as $admin)
+                                <tr>
+                                    <td>{{ $no }}</td>
+                                    <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->email }}</td>
+                                    <td>{{ $admin->alamat }}</td>
+                                    <td>{{ $admin->no_hp }}</td>
                                 </tr>
                                 <?php $no++  ?>
                                 @endforeach
@@ -87,18 +117,30 @@ Daftar Pegawai | SIPERPUS
                     <div class="form-group">
                         <label>Nama Pegawai</label>
                         <input type="text" name="name" class="form-control" required>
+                        @if($errors->has('name'))
+                        <div class="text-danger">{{ $errors->first('name') }}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Email</label>
                         <input type="email" name="email" class="form-control" required>
+                        @if($errors->has('email'))
+                        <div class="text-danger">{{ $errors->first('email') }}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Alamat</label>
                         <input type="text" name="alamat" class="form-control" required>
+                        @if($errors->has('alamat'))
+                        <div class="text-danger">{{ $errors->first('alamat') }}</div>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label>Nomor HP</label>
                         <input type="number" name="no_hp" class="form-control" required>
+                        @if($errors->has('no_hp'))
+                        <div class="text-danger">{{ $errors->first('no_hp') }}</div>
+                        @endif
                     </div>
                     <small>
                         <span style="color:red">*Semua data wajib diisi.</span><br>
