@@ -9,6 +9,11 @@
         <div class="menu-inner">
             <nav>
                 <ul class="metismenu" id="menu">
+                    @role('anggota')
+                    <li><a href="/anggota"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
+                    <li><a href="/anggota/pinjaman/riwayat"><i class="ti-bookmark"></i><span>Riwayat Pinjam</span></a>
+                    </li>
+                    @endrole
                     @role('pegawai')
                     <li><a href="/pegawai"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
                     <li><a href="/kelola/peminjaman/daftar"><i class="ti-agenda"></i><span>Peminjaman</span></a></li>

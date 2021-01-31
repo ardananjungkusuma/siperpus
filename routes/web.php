@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'AuthController@login');
+Route::get('/', 'HomepageController@index');
 
 Route::get('/auth/login', 'AuthController@login')->middleware('guest')->name('login');
 Route::post('/auth/postLogin', 'AuthController@postLogin');
@@ -12,7 +12,7 @@ Route::get('/auth/logout', 'AuthController@logout');
 
 Route::group(['middleware' => ['auth', 'role:pegawai']], function () {
     Route::get('/pegawai', 'PegawaiController@index');
-    Route::get('/pegawai/profile/settings', 'PegawaiController@setting');
+    Route::match(array('GET', 'POST'), '/pegawai/password/change', 'PegawaiController@changePassword');
 
     Route::get('/kelola/buku/daftar', 'BukuController@index');
     Route::post('/kelola/buku/tambah', 'BukuController@tambah');
@@ -34,4 +34,10 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/kelola/pegawai/daftar', 'AdminController@daftarPegawai');
     Route::post('/kelola/pegawai/tambah', 'AdminController@tambahPegawai');
     Route::get('/kelola/pegawai/hapus/{id}', 'AdminController@hapusPegawai');
+});
+
+Route::group(['middleware' => ['auth', 'role:anggota']], function () {
+    Route::get('/anggota', 'AnggotaController@index');
+    Route::get('/anggota/pinjaman/riwayat', 'AnggotaController@riwayatPinjam');
+    Route::match(array('GET', 'POST'), '/anggota/password/change', 'AnggotaController@changePassword');
 });

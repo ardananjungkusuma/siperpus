@@ -39,10 +39,10 @@ Daftar Peminjaman Buku | SIPERPUS
                             <thead class="text-capitalize bg-info text-white">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Peminjam</th>
-                                    <th>Nama Buku</th>
                                     <th>Tanggal Pinjam</th>
                                     <th>Tanggal Maksimal Pengembalian</th>
+                                    <th>Nama Peminjam</th>
+                                    <th>Nama Buku</th>
                                     <th>Status</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -67,10 +67,10 @@ Daftar Peminjaman Buku | SIPERPUS
                                         }
                                     ?>
                                     <td>{{ $no }}</td>
-                                    <td>{{ $peminjaman->user->name }}</td>
-                                    <td>{{ $peminjaman->nama_buku }}</td>
                                     <td>{{ date("d-m-Y", strtotime($peminjaman->tanggal_pinjam))  }}</td>
                                     <td>{{ date("d-m-Y", strtotime($peminjaman->tanggal_maks_pengembalian))  }}</td>
+                                    <td>{{ $peminjaman->user->name }}</td>
+                                    <td>{{ $peminjaman->nama_buku }}</td>
                                     <td>{{ $peminjaman->status_peminjaman }}</td>
                                     <td>
                                         <button class="badge badge-info btn-sm m-1" data-toggle="modal"

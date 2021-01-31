@@ -1,0 +1,93 @@
+.apply_form_area{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    @media #{$mobile_device} {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    @media #{$tablet_device} {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .apply_form{
+        border: 1px solid #E8E8E8;
+        @include border-radius(5px);
+        padding: 50px;
+        @media #{$mobile_device} {
+            padding: 25px;
+        }
+        .apply_info_text{
+            margin-bottom: 40px;
+            h3{
+                font-size: 30px;
+                font-weight: 400;
+                margin-bottom: 21px;
+            }
+            p{
+                margin-bottom: 0;
+            }
+        }
+        .single_field{
+            input,textarea{
+                width: 100%;
+                height: 50px;
+                border: 1px solid #E8E8E8;
+                padding: 14px 20px ;
+                @include border-radius(5px);
+                margin-bottom: 15px;
+                &::placeholder{
+                    color: #7A838B;
+                    font-weight: 400;
+                    font-size: 16px;
+                }
+                &:focus{
+                    outline: none;
+                }
+            }
+            textarea{
+                height: 192px;
+            }
+        }
+    }
+    .pay_text{
+       p{
+           font-size: 16px;
+           color: #7A838B;
+           font-weight: 400;
+           margin: 8px 0 27px 0;
+           span{
+               color: #040E27;
+           }
+       } 
+    }
+    .nice-select {
+        white-space: normal;
+        width: auto;
+        height: 50px !important;
+        margin-bottom: 15px;
+        width: 100%;
+        line-height: 50px !important;
+        font-size: 16px;
+        color:#7A838B;
+    }
+    .nice-select:active, .nice-select.open, .nice-select:focus {
+        border-color:#E8E8E8;
+    }
+    .submit_btn{
+        margin-top: 30px;
+        button{
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.gj-picker.gj-picker-md.datepicker.gj-unselectable {
+
+    @media #{$mobile_device} {
+        position: absolute;
+        left: 15px !important;
+        right: 15px !important;
+    }
+
+}

@@ -1,0 +1,40 @@
+.works_area{
+    padding-top: 150px;
+    padding-bottom: 120px;
+    background: #F5FBFF;
+    @media #{$mobile_device} {
+        padding-top: 60px;
+        padding-bottom: 30px;
+    }
+    .single_works{
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+
+        @media #{$min_dev} {
+            padding-right: 25px;
+        }
+        span{
+            display: inline-block;
+            width: 72px;
+            height: 72px;
+            @include border-radius(50%);
+            background: #DDF0FF;
+            color: #0A8CFF;
+            text-align: center;
+            line-height: 72px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        h3{
+            font-size: 24px;
+            color: #040E27;
+            font-weight: 400;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        p{
+            color: #7A838B;
+        }
+    }   
+}
+

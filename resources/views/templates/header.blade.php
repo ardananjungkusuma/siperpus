@@ -23,7 +23,12 @@
                 <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->name }}<i
                         class="fa fa-angle-down"></i></h4>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Settings</a>
+                    @role('anggota')
+                    <a class="dropdown-item" href="/anggota/password/change">Ganti Password</a>
+                    @endrole
+                    @role('pegawai')
+                    <a class="dropdown-item" href="/pegawai/password/change">Ganti Password</a>
+                    @endrole
                     <a class="dropdown-item" href="/auth/logout">Log Out</a>
                 </div>
             </div>

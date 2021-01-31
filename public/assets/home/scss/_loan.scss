@@ -1,0 +1,36 @@
+.apply_loan{
+    background-image: url(../img/banner/loan.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 137px 0;
+    &.overlay::before{
+        opacity: .4;
+    }
+    @media #{$mobile_device}{
+        padding: 100px 0;
+    }
+    .loan_text{
+        h3{
+            font-size: 44px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 0;
+            line-height: 56px;
+            @media #{$mobile_device} {
+                font-size: 24px;
+                line-height: 1.4;
+            }
+            @media #{$tablet_device} {
+                font-size: 34px;
+                line-height: 1.4;
+            }
+        }
+    }
+    .loan_btn{
+        text-align: right;
+        @media #{$mobile_device}{
+            text-align: left;
+            margin-top: 30px;
+        }
+    }
+}

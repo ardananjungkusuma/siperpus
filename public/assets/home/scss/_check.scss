@@ -1,0 +1,117 @@
+input[type=checkbox] + label {
+    display: block;
+    margin: 0.2em;
+    cursor: pointer;
+    padding: 0.2em;
+    font-family: $font2;
+  }
+  
+  input[type=checkbox] {
+    display: none;
+  }
+  
+  input[type=checkbox] + label:before {
+    content: "\2714";
+    border: 0.1em solid #000;
+    border-radius: 0.2em;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    margin-right: 0.2em;
+    vertical-align: bottom;
+    color: transparent;
+    transition: .2s;
+  }
+  
+  input[type=checkbox] + label:active:before {
+    transform: scale(0);
+  }
+  
+  input[type=checkbox]:checked + label:before {
+    background-color: #F91842;
+    border-color: #F91842;
+    color: #fff;
+  }
+  
+  input[type=checkbox]:disabled + label:before {
+    transform: scale(1);
+    border-color: #aaa;
+  }
+  
+  input[type=checkbox]:checked:disabled + label:before {
+    transform: scale(1);
+    background-color: #bfb;
+    border-color: #bfb;
+  }
+
+  input[type="checkbox"] + label::before {
+	content: "\2714";
+	border: 0.1em solid #D5D5D5;
+	border-radius: 0.2em;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	padding-left: 0;
+	padding-bottom: 0;
+	margin-right: 0;
+	vertical-align: bottom;
+	color: transparent;
+	transition: .2s;
+	line-height: 18px;
+    padding: 0 3px;
+    margin-right: 12px;
+}
+
+input[type="checkbox"] + label {
+	display: block;
+	margin: 0.2em;
+	cursor: pointer;
+	padding: 0.2em;
+	font-family: "Raleway", sans-serif;
+	font-size: 14px;
+	color: #727272;
+	font-weight: 400;
+}
+
+
+
+
+.ui-widget.ui-widget-content {
+  border: 1px solid #c5c5c5;
+  background:#FFD5DC;
+  border: none;
+  border-radius: 0;
+  height: 2px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	background: #2ecaf9 !important;
+	border-radius: 5px;
+	font-size: 21px;
+	border: none !important;
+	box-shadow: none;
+	border: 1px solid #F91842 !important;
+	width: 14px;
+	height: 16px;
+	background: #fff !important;
+}
+
+
+.last_range label {
+  font-size: 16px;
+  font-family: $font2;
+  color: #001D38;
+  font-weight: 400;
+}
+
+p #amount{
+  font-size: 14px;
+  color:#919191 !important;
+  font-family: $font2;
+  font-weight: 400 !important; 
+}
+
+#slider-range {
+	margin: 15px 0;
+}

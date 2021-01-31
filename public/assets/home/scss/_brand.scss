@@ -1,0 +1,22 @@
+.brad_area{
+    padding-bottom: 150px;
+    @media #{$mobile_device}{
+        padding-bottom: 50px;
+    }
+    @media #{$tablet_device}{
+        padding-bottom: 50px;
+    }
+    .single_brand{
+        text-align: center;
+    }
+    .owl-carousel .owl-item img {
+        display: inline-block;
+        width: auto;
+        @media #{$mobile_device}{
+            width: 100%;
+        }
+        @media #{$tablet_device}{
+            width: 100%;
+        }
+    }
+}
