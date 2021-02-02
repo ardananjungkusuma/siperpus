@@ -37,13 +37,13 @@ Homepage | SIPERPUS
             <div class="col-lg-6 col-md-6">
                 <div class="about_info pl-68">
                     <div class="section_title wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".3s">
-                        <h3>Why Choose Us?</h3>
+                        <h3>Kenapa Memilih Kami?</h3>
                     </div>
-                    <p class="wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".4s">Esteem spirit temper too say
-                        adieus who direct esteem.It esteems luckily or picture placing drawing. Apartments frequently or
-                        motionless on reasonable.</p>
+                    <p class="wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".4s">Perpustakaan kami memiliki
+                        katalog buku yang lengkap. Baik dari proses pendaftaran, peminjaman sangat mudah dan tentunya
+                        gratis atau tidak dipungut biaya sepeser-pun.</p>
                     <div class="about_btn wow fadeInRight" data-wow-duration="1.3s" data-wow-delay=".5s">
-                        <a class="boxed-btn3" href="apply.html">About Us</a>
+                        <a class="boxed-btn3" href="#">About Us</a>
                     </div>
                 </div>
             </div>
@@ -52,21 +52,15 @@ Homepage | SIPERPUS
 </div>
 <!-- service_area_end  -->
 
-<!-- about_area_start  -->
-{{-- <div class="about_area">
-
-</div> --}}
-<!-- about_area_end  -->
-
 <div class="works_area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section_title text-center mb-90">
                     <span class="wow lightSpeedIn" data-wow-duration="1s" data-wow-delay=".1s"></span>
-                    <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">How it Works</h3>
-                    <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">We provide online instant cash
-                        loans with quick approval that suit your term</p>
+                    <h3 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".2s">Bagaimana Cara Meminjam</h3>
+                    <p class="wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">Kami menyediakan katalog buku
+                        online sehingga anda bisa mencari buku yang anda pinjam melalui website ini</p>
                 </div>
             </div>
         </div>
@@ -76,9 +70,8 @@ Homepage | SIPERPUS
                     <span>
                         01
                     </span>
-                    <h3>Apply for loan</h3>
-                    <p>We will customize a loan based on the
-                        amount of cash your company need term</p>
+                    <h3>Cari Buku Yang Dipinjam</h3>
+                    <p>Cari buku pada menu katalog buku</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
@@ -86,9 +79,8 @@ Homepage | SIPERPUS
                     <span>
                         02
                     </span>
-                    <h3>Application review</h3>
-                    <p>We will customize a loan based on the
-                        amount of cash your company need term</p>
+                    <h3>Daftar Menjadi Anggota</h3>
+                    <p>Daftar dan isi data diri anda sebagai anggota perpustakaan</p>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
@@ -96,9 +88,8 @@ Homepage | SIPERPUS
                     <span>
                         03
                     </span>
-                    <h3>Get funding fast</h3>
-                    <p>We will customize a loan based on the
-                        amount of cash your company need term</p>
+                    <h3>Datang Ke Perpustakaan</h3>
+                    <p>Setelah terdaftar silahkan datang ke perpustakaan untuk melakukan peminjaman buku</p>
                 </div>
             </div>
         </div>
@@ -117,7 +108,7 @@ Homepage | SIPERPUS
                                 <h5 class="mb-0">
                                     <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOnee"
                                         aria-expanded="true" aria-controls="collapseOnee">
-                                        Adieus who direct esteem It esteems luckily?
+                                        Apakah katalog buku sama seperti pada perpustakaan?
                                     </button>
                                 </h5>
                             </div>
@@ -125,8 +116,7 @@ Homepage | SIPERPUS
                             <div id="collapseOnee" class="collapse show" aria-labelledby="headingOnee"
                                 data-parent="#accordion">
                                 <div class="card-body">
-                                    Esteem spirit temper too say adieus who direct esteem esteems luckily or picture
-                                    placing drawing.
+                                    Ya, katalog buku ini sinkron dengan buku yang ada pada perpustakaan.
                                 </div>
                             </div>
                         </div>
@@ -135,14 +125,13 @@ Homepage | SIPERPUS
                                 <h5 class="mb-0">
                                     <button class="btn btn-link collapsed" data-toggle="collapse"
                                         data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        Who direct esteem It esteems?
+                                        Siapa saja yang bisa menjadi anggota perpustakaan?
                                     </button>
                                 </h5>
                             </div>
                             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion"
                                 style="">
-                                <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems
-                                    luckily or picture placing drawing.
+                                <div class="card-body">Masyarakat mulai dari kalangan pelajar bisa menjadi anggota
                                 </div>
                             </div>
                         </div>
@@ -152,14 +141,14 @@ Homepage | SIPERPUS
                                     <button class="btn btn-link collapsed" data-toggle="collapse"
                                         data-target="#collapseThree" aria-expanded="false"
                                         aria-controls="collapseThree">
-                                        Duis consectetur feugiat auctor?
+                                        Apakah peminjaman buku dikenakan biaya?
                                     </button>
                                 </h5>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                                 data-parent="#accordion" style="">
-                                <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems
-                                    luckily or picture placing drawing.
+                                <div class="card-body">Peminjaman buku pada perpustakaan kami tidak dikenai biaya alias
+                                    gratis. Namun jika terlambat mengambalikan akan dikenakan denda Rp. 5000/hari
                                 </div>
                             </div>
                         </div>
@@ -169,14 +158,13 @@ Homepage | SIPERPUS
                                     <button class="btn btn-link collapsed" data-toggle="collapse"
                                         data-target="#collapseThree4" aria-expanded="false"
                                         aria-controls="collapseThree4">
-                                        Consectetur feugiat auctor?
+                                        Jam operasional perpustakaan hari apa saja?
                                     </button>
                                 </h5>
                             </div>
                             <div id="collapseThree4" class="collapse" aria-labelledby="headingThree4"
                                 data-parent="#accordion" style="">
-                                <div class="card-body">Esteem spirit temper too say adieus who direct esteem esteems
-                                    luckily or picture placing drawing.
+                                <div class="card-body">Kami buka dari Senin-Jumat dari jam 08.00 - 16.00
                                 </div>
                             </div>
                         </div>
@@ -204,10 +192,10 @@ Homepage | SIPERPUS
                                         </div>
                                     </div>
                                     <div class="info">
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
-                                            programmes to help alleviate human suffering through animal welfare when
-                                            people might depend on livestock as their only source of income or food.</p>
-                                        <span>- Micky Mouse</span>
+                                        <p>"Semakin banyak kamu membaca, semakin banyak hal pula yang kamu ketahui.
+                                            Semakin banyak kamu belajar, semakin banyak tempat yang akan kamu kunjungi.
+                                        </p>
+                                        <span>-Dr. Seuss-</span>
                                     </div>
                                 </div>
                             </div>
@@ -224,10 +212,8 @@ Homepage | SIPERPUS
                                         </div>
                                     </div>
                                     <div class="info">
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
-                                            programmes to help alleviate human suffering through animal welfare when
-                                            people might depend on livestock as their only source of income or food.</p>
-                                        <span>- Micky Mouse</span>
+                                        <p>"Aku rela di penjara asalkan bersama buku, karena dengan buku aku bebas. </p>
+                                        <span>-Mohammad Hatta-</span>
                                     </div>
                                 </div>
                             </div>
@@ -244,10 +230,10 @@ Homepage | SIPERPUS
                                         </div>
                                     </div>
                                     <div class="info">
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported
-                                            programmes to help alleviate human suffering through animal welfare when
-                                            people might depend on livestock as their only source of income or food.</p>
-                                        <span>- Micky Mouse</span>
+                                        <p>"Buku apapun yang membantu seseorang anak membentuk kebiasaan membaca,
+                                            menjadikan membaca kebutuhannya yang mendalam dan tiada habis, adalah buku
+                                            yang baik baginya</p>
+                                        <span>-Maya Angelou-</span>
                                     </div>
                                 </div>
                             </div>

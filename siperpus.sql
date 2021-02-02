@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2021 at 02:42 PM
+-- Generation Time: Jan 31, 2021 at 05:33 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -102,8 +102,13 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\User', 1),
+(1, 'App\\User', 2),
+(1, 'App\\User', 9),
 (2, 'App\\User', 1),
 (2, 'App\\User', 2),
+(2, 'App\\User', 6),
+(2, 'App\\User', 8),
+(2, 'App\\User', 9),
 (3, 'App\\User', 3),
 (3, 'App\\User', 4),
 (3, 'App\\User', 5);
@@ -144,9 +149,11 @@ CREATE TABLE `peminjaman` (
 --
 
 INSERT INTO `peminjaman` (`id`, `id_user`, `nama_buku`, `tanggal_pinjam`, `tanggal_maks_pengembalian`, `tanggal_kembali`, `denda`, `status_peminjaman`, `updated_at`, `created_at`) VALUES
-(1, 4, 'Kata: Tentang Senja Yang Kehilangan Langitnya', '2021-01-26', '2021-02-02', NULL, 0, 'Belum Dikembalikan', '2021-01-27 07:19:25', '2021-01-27 07:19:25'),
+(1, 4, 'Kata: Tentang Senja Yang Kehilangan Langitnya', '2021-01-26', '2021-02-02', '2021-01-31', 0, 'Sudah Dikembalikan', '2021-01-31 14:56:40', '2021-01-27 07:19:25'),
 (2, 3, 'Bumi Manusia', '2021-01-18', '2021-01-25', '2021-01-28', 15000, 'Sudah Dikembalikan (Terlambat)', '2021-01-28 13:27:40', '2021-01-27 15:37:37'),
-(5, 3, 'A Cup Of Tea', '2021-01-28', '2021-02-04', NULL, 0, 'Belum Dikembalikan', '2021-01-28 13:42:23', '2021-01-28 13:42:23');
+(5, 3, 'A Cup Of Tea', '2021-01-28', '2021-02-04', NULL, 0, 'Belum Dikembalikan', '2021-01-28 13:42:23', '2021-01-28 13:42:23'),
+(6, 4, 'Harry Potter and the Sorcerer\'s Stone', '2021-01-31', '2021-02-07', NULL, 0, 'Belum Dikembalikan', '2021-01-31 14:57:18', '2021-01-31 14:57:18'),
+(7, 5, 'Hilang: Sebuah Kekalahan Tanpa Pemenang', '2021-01-31', '2021-02-07', NULL, 0, 'Belum Dikembalikan', '2021-01-31 15:54:59', '2021-01-31 15:54:59');
 
 -- --------------------------------------------------------
 
@@ -220,11 +227,14 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `alamat`, `no_hp`, `password`, `status_user`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Ardan Anjung Kusuma', 'ardan@gmail.com', NULL, NULL, '$2y$10$/HLwlXt61xERt0QY4K2EG.7Iy0N/jh/0U0Dx9BeBiAKhGjKBTGhzO', 'Aktif', 'XTt4w8UTdFg0Oc1NWka136TT3U7rho6ztGOFDCxQFZ1dmycYye4WCOgegfST', '2021-01-21 20:28:23', '2021-01-21 20:28:23'),
-(2, 'Gunawan Kurniya Aji', 'gunawan@gmail.com', NULL, NULL, '$2y$10$4FwxnKJV.zjJbFP2rjrm3uZUQZ2PITlt41R5UgH.kesXMwzdjlMAm', 'Aktif', '2O8r5JtQ9aCPCpLR8qLYg3F8rpiVcBesCoI32WF9LmtPURbKvCgLJj7JT1Cr', '2021-01-21 20:29:28', '2021-01-21 20:29:28'),
-(3, 'Ahmad Kholil', 'kholil@gmail.com', 'Jl. Melati 12 Bojonegoro', NULL, '$2y$10$Cv6wCtUW9KRlpsymyqCa/e5vuofrCq50/44rFvhjNhM2664ESrTQu', 'Aktif', 'u9jcKERUlyVSVPUwWCglfnM2bvhvrCe1HVUK3ta4LftkSa5hWrSgYDkRSWgI', '2021-01-21 23:46:00', '2021-01-21 23:46:00'),
-(4, 'Yuni Kurnia', 'yuni@gmail.com', 'Jl. Mawar 13 Bojonegoro', '081234561232', '$2y$10$zcjXzPdPIJPxS.qv8dt6sOL.IEyJR6cDuO/wh.wz4ITbRyh/zT9LS', 'Aktif', '2zyuLc8nmEpmvh0UXioKjxvhyebEDdHnjYOAPtlltVD4G461OsFd9w7SZfwY', '2021-01-24 20:33:03', '2021-01-24 20:33:03'),
-(5, 'Gita Savitri Devi', 'gita@gmail.com', 'Jl. Sesame 12 Bojonegoro', '082341234821', '$2y$10$s7.L/GrMVb.uH/HqBYw/quXJ3kkVVBmGbyVfG0l0bVa3xXzhcG0ga', 'Tidak Aktif', 'ub8qax9pVuJoFmaccZJgQyuPZ4bor4t3zrc767xJQYuWt9dg3aWh3t2y27qA', '2021-01-24 20:43:00', '2021-01-24 20:43:00');
+(1, 'Ardan Anjung Kusuma', 'ardan@gmail.com', 'Jl. Kusman 10', '089560678752', '$2y$10$q/MBBG70jqY6FiPWJ2Fcn.ThbnDGKvBHfrTtAdCu6ckzSFy2miaxG', 'Aktif', 'MCX8aFyJVQav0eiF9KFyGitotBHYc9mnmgh8f7bNDHLpzwmaa6pmc2sInr2x', '2021-01-21 20:28:23', '2021-01-31 08:50:04'),
+(2, 'Gunawan Kurniya Aji', 'gunawan@gmail.com', 'JL. Kenanga 99 Balen', '082341235127', '$2y$10$4FwxnKJV.zjJbFP2rjrm3uZUQZ2PITlt41R5UgH.kesXMwzdjlMAm', 'Aktif', 'ASVPXcQy5CzTvvd6sOTOFGODVkHuO3OC1AR1nBr5TGgWHkxhbVdsBsnkVCkk', '2021-01-21 20:29:28', '2021-01-21 20:29:28'),
+(3, 'Ahmad Kholil', 'kholil@gmail.com', 'Jl. Melati 12 Bojonegoro', '082359124212', '$2y$10$Cv6wCtUW9KRlpsymyqCa/e5vuofrCq50/44rFvhjNhM2664ESrTQu', 'Aktif', 'u9jcKERUlyVSVPUwWCglfnM2bvhvrCe1HVUK3ta4LftkSa5hWrSgYDkRSWgI', '2021-01-21 23:46:00', '2021-01-21 23:46:00'),
+(4, 'Yuni Kurnia', 'yuni@gmail.com', 'Jl. Mawar 13 Bojonegoro', '081234561232', '$2y$10$xn2DoksDfpkNWCM.lm0yCOkOrKA5FIGGz8tAuHKH4VdgKpXQinmZq', 'Aktif', '8vpDJkyKxhh4tYUgPkY4WTyapMkQQ50CLdNu3Jj2sESM9l9SsUuK3AFqb8yO', '2021-01-24 20:33:03', '2021-01-31 08:58:46'),
+(5, 'Gita Savitri Devi', 'gita@gmail.com', 'Jl. Sesame 12 Bojonegoro', '082341234821', '$2y$10$s7.L/GrMVb.uH/HqBYw/quXJ3kkVVBmGbyVfG0l0bVa3xXzhcG0ga', 'Aktif', 'ub8qax9pVuJoFmaccZJgQyuPZ4bor4t3zrc767xJQYuWt9dg3aWh3t2y27qA', '2021-01-24 20:43:00', '2021-01-29 19:05:17'),
+(6, 'Agung Adi', 'agung@gmail.com', 'Jl. Depan Stadion 15', '08951234231', '$2y$10$PEGA7NvFNvI6kCvdykpZLenmMqkztswrms1Q5NbMkWYQPxJXP51Y.', 'Aktif', '1bP8Mi8o8kemLjHzv3kBWx7jOdUte4N9CH5x58tQDgVCmqtPP31WwYEZ2lp5', '2021-01-29 20:08:50', '2021-01-29 20:08:50'),
+(8, 'Demo Pegawai', 'demo@gmail.com', 'Jl Demo Pegawai', '08123456732', '$2y$10$GzbRnUGXhoJxZX0ygfY3c.aLNDsnf0.V9ecsqIGkRr7be6Oru0tKK', 'Aktif', 'te08fttYdr1IBOIruAX9eYo69aZ2eomqf7UmguBdiPBhshiR7rEY4ObE9VB4', '2021-01-31 09:08:39', '2021-01-31 09:08:39'),
+(9, 'Another Admin', 'admin@gmail.com', 'Bojonegoro', '0859212323', '$2y$10$CfoyPThOdmgIzzVFpQgRoeSkxgalOfGB65pqCRQx9mPLVWwcKE5.q', 'Aktif', 'NUMpmlHqISVTdXasHfJChMbLncbPR5OzNUACtYkSL7S8sHmnC77q6aHxJSkO', '2021-01-31 09:13:10', '2021-01-31 09:13:10');
 
 --
 -- Indexes for dumped tables
@@ -314,7 +324,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `peminjaman`
 --
 ALTER TABLE `peminjaman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -332,7 +342,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Constraints for dumped tables

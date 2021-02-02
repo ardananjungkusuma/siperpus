@@ -16,7 +16,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="">Katalog Buku</a>
+                                        <li><a href="/buku/katalog">Katalog Buku</a>
                                         <li><a href="">Pengumuman & Informasi</a>
                                         </li>
                                         <li><a href="">Tentang Kami</a></li>
@@ -34,7 +34,7 @@
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="Appointment">
                                 <div class="phone_num d-none d-xl-block">
-                                    <a href=""> <i class="fa fa-phone"></i> (0353) 882673</a>
+                                    <a href=""> <i class="fa fa-phone"></i> (0353) 88xxxx</a>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,8 @@
 <?php
 
 Route::get('/', 'HomepageController@index');
+Route::match(array('GET', 'POST'), '/buku/katalog', 'HomepageController@katalogBuku');
+Route::get('/buku/detail/{slug}', 'HomepageController@detailBuku');
 
 Route::get('/auth/login', 'AuthController@login')->middleware('guest')->name('login');
 Route::post('/auth/postLogin', 'AuthController@postLogin');
