@@ -17,9 +17,8 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="/buku/katalog">Katalog Buku</a>
-                                        <li><a href="">Pengumuman & Informasi</a>
+                                        <li><a href="/pengumuman">Pengumuman & Informasi</a>
                                         </li>
-                                        <li><a href="">Tentang Kami</a></li>
                                         <li><a href="#">Anggota <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="/auth/register">Register</a>

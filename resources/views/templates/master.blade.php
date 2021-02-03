@@ -44,7 +44,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>Synxhronous © Copyright 2021. All right reserved.</p>
+                <p>Synxhronous ©<?= date('Y') ?>. All right reserved.</p>
             </div>
         </footer>
         <!-- footer area end-->

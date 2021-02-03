@@ -11,8 +11,7 @@
                             </a>
                         </div>
                         <p>
-                            Jl. Gajah Mada No.114<br> Sukorejo Lor, Sukorejo<br> Kec. Bojonegoro, Kabupaten
-                            Bojonegoro<br>Jawa Timur<br>62115
+                            Grove Street 14<br> Ganton<br> Los Santos<br>San Andreas<br>14292
                         </p>
                     </div>
                 </div>
@@ -25,7 +24,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <p class="copy_right text-center">
-                        Copyright &copy;<?= date('Y') ?> All rights reserved</a>
+                        Synxhronous &copy;<?= date('Y') ?>. All rights reserved.</a>
                     </p>
                 </div>
             </div>

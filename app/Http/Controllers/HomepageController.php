@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Buku;
+use App\Pengumuman;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomepageController extends Controller
 {
@@ -26,5 +28,17 @@ class HomepageController extends Controller
     {
         $buku = Buku::where('slug', $slug)->get()->first();
         return view('homepage.detail-buku', compact('buku'));
+    }
+
+    public function pengumuman()
+    {
+        $pengumuman = Pengumuman::orderBy('created_at', 'DESC')->paginate(6);
+        return view('homepage.pengumuman', compact('pengumuman'));
+    }
+
+    public function detailPengumuman($slug)
+    {
+        $pengumuman = Pengumuman::where('slug', $slug)->get()->first();
+        return view('homepage.detail-pengumuman', compact('pengumuman'));
     }
 }

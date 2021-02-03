@@ -42,9 +42,6 @@ Homepage | SIPERPUS
                     <p class="wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".4s">Perpustakaan kami memiliki
                         katalog buku yang lengkap. Baik dari proses pendaftaran, peminjaman sangat mudah dan tentunya
                         gratis atau tidak dipungut biaya sepeser-pun.</p>
-                    <div class="about_btn wow fadeInRight" data-wow-duration="1.3s" data-wow-delay=".5s">
-                        <a class="boxed-btn3" href="#">About Us</a>
-                    </div>
                 </div>
             </div>
         </div>

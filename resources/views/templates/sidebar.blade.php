@@ -1,8 +1,9 @@
 <div class="sidebar-menu">
     <div class="sidebar-header">
         <div class="logo">
-            <h5 style="color:white">SIPERPUS <i class="fa fa-book"></i></h5>
-            {{-- <a href="index.html"><img src="assets/images/icon/logo.png" alt="logo"></a> --}}
+            <a href="/">
+                <h5 style="color:white">SIPERPUS <i class="fa fa-book"></i></h5>
+            </a>
         </div>
     </div>
     <div class="main-menu">
