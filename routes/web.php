@@ -28,6 +28,13 @@ Route::group(['middleware' => ['auth', 'role:pegawai']], function () {
     Route::post('/kelola/peminjaman/pengembalian', 'PeminjamanController@pengembalian');
     Route::get('/kelola/peminjaman/delete/{id}', 'PeminjamanController@delete');
 
+    Route::get('/kelola/pengumuman/daftar', 'PengumumanController@index');
+    Route::match(array('GET', 'POST'), '/kelola/pengumuman/tambah', 'PengumumanController@tambah');
+    Route::get('/kelola/pengumuman/detail/{slug}', 'PengumumanController@detail');
+    Route::match(array('GET', 'POST'), '/kelola/pengumuman/edit/{slug?}', 'PengumumanController@edit');
+    Route::get('/kelola/pengumuman/delete/{slug}', 'PengumumanController@delete');
+
+
     Route::get('/kelola/anggota/daftar', 'PegawaiController@daftarAnggota');
     Route::get('/kelola/anggota/status/{status}/{id}', 'PegawaiController@statusAnggota');
 });

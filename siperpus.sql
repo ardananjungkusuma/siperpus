@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 31, 2021 at 05:33 PM
+-- Generation Time: Feb 03, 2021 at 06:36 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -158,6 +158,32 @@ INSERT INTO `peminjaman` (`id`, `id_user`, `nama_buku`, `tanggal_pinjam`, `tangg
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengumuman`
+--
+
+CREATE TABLE `pengumuman` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `judul` varchar(200) NOT NULL,
+  `slug` varchar(250) NOT NULL,
+  `isi` text NOT NULL,
+  `gambar_header` varchar(250) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengumuman`
+--
+
+INSERT INTO `pengumuman` (`id`, `id_user`, `judul`, `slug`, `isi`, `gambar_header`, `updated_at`, `created_at`) VALUES
+(1, 1, 'Gerakan Ayo Membaca Bangkitkan Budaya Literasi Indonesia', 'gerakan-ayo-membaca-bangkitkan-budaya-literasi-indonesia-210203033558', '<p>Ketua Ikatan Penerbit Indonesia (IKAPI) DKI Jakarta Afrizal Sinaro mendukung diluncurkannya Gerakan&nbsp; Ayo Membaca Indonesia yang digagas oleh Yayasan Ayo Membaca Indonesia (AMInd). Menurut Afrizal, apa-apa yang ditawarkan oleh gagasan tersebut dapat menjadi langkah awal bagi masyarakat Indonesia untuk menuju sebagai masyarakat yang cerdas.<br />\r\n<br />\r\n<strong>&ldquo;Ini sebagai langkah awal, IKAPI pasti mendukung, karena membaca adalah langkah untuk mewujudkan masyarakat yang maju dan cerdas,&rdquo;</strong> kata Afrizal kepada&nbsp;<strong><em>ROL</em></strong>, Rabu (4/3).<br />\r\n<br />\r\nApalagi, kata dia, gerakan ini muncul dari kalangan masyarakat yang ingin mengubah agar budaya literasi di Indonesia terus ditingkatkan. Ide ini menurut Afrizal harus disambut baik oleh seluruh kalangan masyarakat baik itu pemerintah, komunitas ataupun masyarakat biasa.<br />\r\n<br />\r\nAfrizal menjelaskan faktanya saat ini budaya&nbsp; membaca di masyarakat Indonesia saat ini masih rendah. Baik itu fakta dari dunia internasional ataupun berdasarkan riset dari dalam negeri. Untuk itu, inilah saatnya bagi Indonesia untuk mulai meningkatkan kualitas setiap diri masyarakat dengan menggiatkan kegemaran membaca. Tidak hanya bagi orang dewasa, tetapi juga dimulai dari anak-anak usia dini.<br />\r\n<br />\r\nSebuah negara maju kata Afrizal akan terwujud bila masyarakat sebagai elemen penting di dalamnya gemar membaca dan punya pengetahuan dan wawasan yang luas. &ldquo;Tanpa membaca buku, kita tidak akan tahu, tanpa membaca kita tidak akan cerdas. Benar yang dikatakan Pak Dedi Panigoro (Ketua AMInd) membaca itu untuk memberantas kebodohan, kemiskinan dan korupsi,&rdquo; ujar Afrizal.</p>', '03022021033558_pengunjung-melihat-koleksi-pada-stand-penerbit-republika-di-pameran.jpg', '2021-02-02 20:35:58', '2021-02-02 20:35:58'),
+(2, 1, '8 Manfaat Membaca Bagi Kita', '8-manfaat-membaca-bagi-kita-210203120207', '<p><em><strong>Manfaat yang bisa kita dapatkan hanya meluangkan dengan waktu untuk membaca, yaitu :</strong></em></p>\r\n\r\n<p><strong>1. Melatih otak</strong></p>\r\n\r\n<p>Dengan sering membaca, secara tidak langsung dapat melatih otak dan pikiran kita. Otak ibarat sebuah pedang, semakin diasah akan semakin tajam. Kebalikannya jika tidak diasah, juga akan tumpul.</p>\r\n\r\n<p><strong>2. Dapat meringankan stress</strong></p>\r\n\r\n<p>Keindahan bahasa dalam sebuah tulisan memiliki kemampuan yang dapat menenangkan dan mengurangi stress, apalagi buku yang di baca berupa buku fiksi atau cerita humor.</p>\r\n\r\n<p><img alt=\"\" src=\"https://image-cdn.medkomtek.com/BVW1D2jmFpIRM91pValnwx2cz9k=/673x379/smart/klikdokter-media-buckets/medias/2315018/original/030647800_1589955378-Menstimulasi-Perkembangan-Otak-shutterstock_726182569.jpg\" style=\"float:left; height:282px; width:500px\" /></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><strong>3. Meningkatkan konsentrasi</strong></p>\r\n\r\n<p>Siapapun yang suka membaca akan memiliki otak yang lebih fokus dan berkonsentrasi, serta memiliki kemampuan yang penuh perhatian dan praktis dalam kehidupan. Selain itu, dapat mengembangkan keterampilan objektivitas dan pengambilan keputusan.</p>\r\n\r\n<p><strong>4. Mengembangkan pola tidur sehat</strong></p>\r\n\r\n<p>Dengan terbiasa membaca buku sebelum tidur, maka hal ini akan bertindak sebagai alarm bagi tubuh sehingga mengirimkan sinyal bahwa sudah waktunya untuk tidur. Dengan demikian dapat membantu untuk mendapatkan tidur nyenyak dan pastinya bangun pagi akan terasa segar.</p>\r\n\r\n<p><strong>5. Menjauhkan risiko penyakit Alzheimer (pelupa)</strong></p>\r\n\r\n<p>Membaca dapat langsung meningkatkan daya ikat otak. Saat membaca, otak akan dirangsang dan distimulasi secara teratur sehingga dapat membantu mencegah gangguan pada otak, termasuk penyakit Alzheimer.</p>\r\n\r\n<p><strong>6. Meningkatkan kosakata</strong></p>\r\n\r\n<p>Dengan rutin melakukan aktifitas membaca, secara tidak sadar kita memperluas perbendaharaan kata di kamus yang ada dalam otak kita. Untuk yang satu ini penting sekali bila diterapkan pada anak-anak.</p>\r\n\r\n<p><strong>7. Mengasah kemampuan menulis</strong></p>\r\n\r\n<p>Selain menambah wawasan dan ilmu pengetahuan, membaca juga bisa mengasah kemampuan menulis. Dengan rajin membaca, kita bisa mempelajari gaya menulis orang lain dengan membaca tulisannya. Dan dengan membaca, kita bisa mendapatkan ide yang melimpah untuk dijadikan bahan menulis.</p>\r\n\r\n<p><strong>8. Sarana refleksi dan pengembangan diri</strong></p>\r\n\r\n<p>Lewat membaca, kita bisa mempelajari bagaimana cara orang lain dalam mengembangkan diri, sehingga bisa kita jadikan bahan pertimbangan atau pembanding sebelum kita melakukan sesuatu.</p>\r\n\r\n<p>Jadi jangan hanya menghabiskan waktu berjam-jam untuk menonton televisi, bermain game komputer atau bersosial media saja, tetapi juga luangkan waktu untuk membaca buku. Kebiasaan baik itu tidak hanya akan menyegarkan pikiran tetapi juga memberi manfaat untuk kesehatan dan kehidupan.</p>', '03022021112827_Pengertian-Membaca-Menurut-Beberapa-Cendekiawan-626x391.jpg', '2021-02-03 05:02:07', '2021-02-03 04:28:27'),
+(4, 1, 'Tentang SIPERPUS', 'tentang-siperpus-210203123621', '<p><strong>Sistem Informasi Perpustakaan <em>(SIPERPUS)</em> kami buat untuk memudahkan para pegawai dalam manajemen buku, transaksi peminjaman dan manajemen anggota. Sedangkan pada sisi anggota akan dimudahkan jika ingin melihat status peminjamannya (Batas Tanggal Mengembalikan) dan melihat katalog buku yang tersedia tanpa harus ke perpustakaan.</strong></p>', '03022021123345_0d0173e06b57b2f91611683b35500e47.jpg', '2021-02-03 05:36:21', '2021-02-03 05:33:45');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `permissions`
 --
 
@@ -279,6 +305,12 @@ ALTER TABLE `peminjaman`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `pengumuman`
+--
+ALTER TABLE `pengumuman`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `permissions`
 --
 ALTER TABLE `permissions`
@@ -325,6 +357,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `peminjaman`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `pengumuman`
+--
+ALTER TABLE `pengumuman`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `permissions`

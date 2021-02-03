@@ -18,6 +18,8 @@
                     <li><a href="/pegawai"><i class="ti-dashboard"></i><span>Dashboard</span></a></li>
                     <li><a href="/kelola/peminjaman/daftar"><i class="ti-agenda"></i><span>Peminjaman</span></a></li>
                     <li><a href="/kelola/buku/daftar"><i class="ti-book"></i><span>Buku</span></a></li>
+                    <li><a href="/kelola/pengumuman/daftar"><i class="ti-announcement"></i><span>Pengumuman</span></a>
+                    </li>
                     <li><a href="/kelola/anggota/daftar"><i class="ti-user"></i><span>Manajemen Anggota</span></a></li>
                     @role('admin')
                     <li><a href="/kelola/pegawai/daftar"><i class="fa fa-group"></i><span>Manajemen Pegawai</span></a>
